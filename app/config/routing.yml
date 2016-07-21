@@ -1,0 +1,4 @@
+satis:
+    resource: "@SatisBundle/Resources/config/routing.yml"
+    prefix:   /
+

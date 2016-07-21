@@ -1,0 +1,3 @@
+satis_questionpage:
+    path:     /
+    defaults: { _controller: SatisBundle:Questions:addQuestion }

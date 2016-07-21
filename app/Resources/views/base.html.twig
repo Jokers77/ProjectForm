@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/clientsatis/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/clientsatis/css/base-container-satis.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+        {% block header %}
+            <div class="header container">
+              <div id="logoStart">
+                <a href=""><img src="{{ asset('bundles/clientsatis/images/logoBMS.png') }}" width="127" height="66" alt="Logo BMS" /></a>
+              </div>
+            </div>
+          {% endblock %}
+
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+
+    
+        {% block javascripts %}
+            <link rel="stylesheet" href="{{ asset('js/bootstrap.min.js') }}">
+        {% endblock %}
+
+    </body>
+</html>

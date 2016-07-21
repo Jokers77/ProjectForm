@@ -1,0 +1,289 @@
+<?php
+
+namespace Client\SatisBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Formulaire
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Client\SatisBundle\Repository\FormulaireRepository")
+ */
+class Formulaire
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sous_titre", type="string", length=255)
+     */
+    private $sousTitre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="entete", type="text")
+     */
+    private $entete;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fin", type="text")
+     */
+    private $fin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quest_note", type="integer")
+     */
+    private $questNote;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ids_questions_indicateurs", type="string", length=55)
+     */
+    private $idsQuestionsIndicateurs;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type", type="integer")
+     */
+    private $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Etape", mappedBy="formulaire")
+     */
+    protected $etape;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Formulaire
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set sousTitre
+     *
+     * @param string $sousTitre
+     * @return Formulaire
+     */
+    public function setSousTitre($sousTitre)
+    {
+        $this->sousTitre = $sousTitre;
+
+        return $this;
+    }
+
+    /**
+     * Get sousTitre
+     *
+     * @return string 
+     */
+    public function getSousTitre()
+    {
+        return $this->sousTitre;
+    }
+
+    /**
+     * Set entete
+     *
+     * @param string $entete
+     * @return Formulaire
+     */
+    public function setEntete($entete)
+    {
+        $this->entete = $entete;
+
+        return $this;
+    }
+
+    /**
+     * Get entete
+     *
+     * @return string 
+     */
+    public function getEntete()
+    {
+        return $this->entete;
+    }
+
+    /**
+     * Set fin
+     *
+     * @param string $fin
+     * @return Formulaire
+     */
+    public function setFin($fin)
+    {
+        $this->fin = $fin;
+
+        return $this;
+    }
+
+    /**
+     * Get fin
+     *
+     * @return string 
+     */
+    public function getFin()
+    {
+        return $this->fin;
+    }
+
+    /**
+     * Set questNote
+     *
+     * @param integer $questNote
+     * @return Formulaire
+     */
+    public function setQuestNote($questNote)
+    {
+        $this->questNote = $questNote;
+
+        return $this;
+    }
+
+    /**
+     * Get questNote
+     *
+     * @return integer 
+     */
+    public function getQuestNote()
+    {
+        return $this->questNote;
+    }
+
+    /**
+     * Set idsQuestionsIndicateurs
+     *
+     * @param string $idsQuestionsIndicateurs
+     * @return Formulaire
+     */
+    public function setIdsQuestionsIndicateurs($idsQuestionsIndicateurs)
+    {
+        $this->idsQuestionsIndicateurs = $idsQuestionsIndicateurs;
+
+        return $this;
+    }
+
+    /**
+     * Get idsQuestionsIndicateurs
+     *
+     * @return string 
+     */
+    public function getIdsQuestionsIndicateurs()
+    {
+        return $this->idsQuestionsIndicateurs;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Formulaire
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etape = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add etape
+     *
+     * @param \Client\SatisBundle\Entity\Etape $etape
+     * @return Formulaire
+     */
+    public function addEtape(\Client\SatisBundle\Entity\Etape $etape)
+    {
+        $this->etape[] = $etape;
+
+        return $this;
+    }
+
+    /**
+     * Remove etape
+     *
+     * @param \Client\SatisBundle\Entity\Etape $etape
+     */
+    public function removeEtape(\Client\SatisBundle\Entity\Etape $etape)
+    {
+        $this->etape->removeElement($etape);
+    }
+
+    /**
+     * Get etape
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEtape()
+    {
+        return $this->etape;
+    }
+}

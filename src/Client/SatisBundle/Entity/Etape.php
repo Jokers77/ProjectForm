@@ -1,0 +1,123 @@
+<?php
+
+namespace Client\SatisBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Etape
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Client\SatisBundle\Repository\EtapeRepository")
+ */
+class Etape
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=255)
+     */
+    private $libelle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="checkFin", type="string", length=255)
+     */
+    private $checkFin;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Formulaire", inversedBy="etapes")
+     * @ORM\JoinColumn(name="formulaire_id", referencedColumnName="id")
+     */
+    protected $formulaire;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     * @return Etape
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string 
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * Set checkFin
+     *
+     * @param string $checkFin
+     * @return Etape
+     */
+    public function setCheckFin($checkFin)
+    {
+        $this->checkFin = $checkFin;
+
+        return $this;
+    }
+
+    /**
+     * Get checkFin
+     *
+     * @return string 
+     */
+    public function getCheckFin()
+    {
+        return $this->checkFin;
+    }
+
+    /**
+     * Set formulaire
+     *
+     * @param \Client\SatisBundle\Entity\Formulaire $formulaire
+     * @return Etape
+     */
+    public function setFormulaire(\Client\SatisBundle\Entity\Formulaire $formulaire = null)
+    {
+        $this->formulaire = $formulaire;
+
+        return $this;
+    }
+
+    /**
+     * Get formulaire
+     *
+     * @return \Client\SatisBundle\Entity\Formulaire 
+     */
+    public function getFormulaire()
+    {
+        return $this->formulaire;
+    }
+}
